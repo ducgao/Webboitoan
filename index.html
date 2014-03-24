@@ -1,0 +1,200 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jQueryRotate.js"></script>
+		<script>
+			$(document).ready(function(){
+				function faceoff(){
+					$("#arrowface").rotate({animateTo:180});
+					$("#facebookarea").animate({left: -250},"fast","swing");
+					$("#headfaceavatar").animate({right: 500},"fast");
+					$("#headfacename").animate({right:300},"fast");
+					$("#facenews-1").animate({right: 500},450);
+					$("#facenews-2").animate({right: 500},500);
+					$("#facenews-3").animate({right: 500},550);
+					$("#facenews-4").animate({right: 500},600);
+					$("#facenews-5").animate({right: 500},650);
+					$("#facenews-6").animate({right: 500},700);
+					$("#facenews-7").animate({right: 500},750);
+					$("#facenews-8").animate({right: 500},800);
+					$("#facenews-9").animate({right: 500},850);
+				}
+				function forumoff(){
+					wdwidth = $(window).width();
+					$("#forumarea").css("width",wdwidth-70);
+					wdwidth = -wdwidth + 100;
+					$("#arrowforum").rotate({animateTo:0});
+					$("#forumarea").animate({right: wdwidth},"fast","swing");
+					$("#backgroundforum").animate({right: wdwidth},"fast");
+					$("#boxs").animate({right: wdwidth},"fast");
+				}
+				function headcoming(){
+					$("#headfaceavatar").animate({right: 55},300, "swing");
+					$("#headfacename").animate({right: 110},400), "swing";
+				}
+				function newscoming(){
+					$("#backgroundface").animate({right: 30},500);
+					$("#facenews-1").animate({right: 60},450);
+					$("#facenews-2").animate({right: 60},500);
+					$("#facenews-3").animate({right: 60},550);
+					$("#facenews-4").animate({right: 60},600);
+					$("#facenews-5").animate({right: 60},650);
+					$("#facenews-6").animate({right: 60},700);
+					$("#facenews-7").animate({right: 60},750);
+					$("#facenews-8").animate({right: 60},800);
+					$("#facenews-9").animate({right: 60},850);
+				}
+				function parallaxleft(){
+					$("#parallax").animate({left: 200},"fast");
+				}
+				function parallaxunleft(){
+					$("#parallax").animate({left: 0},"fast");
+				}
+				function parallaxright(){
+					$("#parallax").animate({left: -500},"fast");
+				}
+				function parallaxunright(){
+					$("#parallax").animate({left: 0},"fast");
+				}
+				var faceon = 0;
+				var forumon = 0;
+				var wdwidth = 0;
+				var block1on = 0;
+				$("#arrowface").click(function(){
+					if(faceon == 0){
+						faceon = 1;
+						$("#arrowface").rotate({animateTo:0});
+						$("#facebookarea").animate({left: 0},"fast");
+						headcoming();
+						newscoming();
+						forumoff();
+						parallaxleft();
+						
+					}else{
+						faceon = 0;
+						faceoff();
+						parallaxunleft();
+					}
+					
+				});
+				$("#arrowforum").click(function(){
+					wdwidth = $(window).width();
+					if(forumon == 0){
+						forumon = 1;
+						$("#forumarea").css("width",wdwidth-40);
+						$("#backgroundforum").css("width",wdwidth-70);
+						$("#boxs").css("width",wdwidth -90);
+						$("#arrowforum").rotate({animateTo:180});
+						$("#forumarea").animate({right: 0},"fast");
+						$("#backgroundforum").animate({right: 0},400);
+						$("#boxs").animate({right:0},600);
+						faceoff();
+						parallaxright();
+					}else{
+						forumon = 0;
+						wdwidth = -wdwidth + 120;
+						forumoff();
+						parallaxunright();
+					}
+				});
+				
+			});
+		</script>
+	</head>
+	<body>
+		<img class="parallax" id="parallax" src="img/bg.jpg" />
+		<!--main area-->
+		<!--
+		<div class="btnboituvi" id="btnboituvi">
+			
+		</div>
+		<!--facebook area-->
+		<div class="facebookarea" id="facebookarea">
+			<img class="arrowface" id="arrowface" src="img/arrow.png" />
+			<img class="logoface" id="logoface" src="img/facebookfanpage.jpg"/>
+			<div class="backgoundface" id="backgroundface">
+				
+			</div>
+			<div class="headface" id="headface">
+				<img class="headfaceavatar" id="headfaceavatar" src="img/avatar.jpg" />
+				<div class="headfacename" id="headfacename">
+					Ông Nội
+				</div>
+			</div>
+			<div style="top:90;" class="facenews" id="facenews-1">
+				&nbspWeb được công nhận là đẹp nhất
+				<div class="backgroundnews" id="backgroundnew">
+					
+				</div>
+				<div class="facenewsshort" id="facenewsshort">
+					Vừa qua Website này đã được công nhận là website đẹp nhất thế giới vì đơn giản nó được chuyên gia DUCGAOGAO....<br /><i style="color: blue;">read more</i>
+				</div>
+			</div>
+			<div style="top:170;" class="facenews" id="facenews-2">
+				&nbspĐức được người đẹp hôn
+				<div class="backgroundnews" id="backgroundnew">
+					
+				</div>
+				<div class="facenewsshort" id="facenewsshort">
+					Vừa qua Website này đã được công nhận là website đẹp nhất thế giới vì đơn giản nó được chuyên gia DUCGAOGAO....<br /><i style="color: blue;">read more</i>
+				</div>
+			</div>
+			<div style="top:250;" class="facenews" id="facenews-3">
+				&nbspTính bị người dân lôi ra đánh
+				<div class="backgroundnews" id="backgroundnew">
+					
+				</div>
+				<div class="facenewsshort" id="facenewsshort">
+					Vừa qua Website này đã được công nhận là website đẹp nhất thế giới vì đơn giản nó được chuyên gia DUCGAOGAO....<br /><i style="color: blue;">read more</i>
+				</div>
+			</div>
+			<div style="top:330;" class="facenews" id="facenews-4">
+				&nbspĐức bị hotgirl gạ gẫm
+				<div class="backgroundnews" id="backgroundnew">
+					
+				</div>
+				<div class="facenewsshort" id="facenewsshort">
+					Vừa qua Website này đã được công nhận là website đẹp nhất thế giới vì đơn giản nó được chuyên gia DUCGAOGAO....<br /><i style="color: blue;">read more</i>
+				</div>
+			</div>
+			<div style="top:410;" class="facenews" id="facenews-5">
+				&nbspNgười sắt bắt người sói
+				<div class="backgroundnews" id="backgroundnew">
+					
+				</div>
+				<div class="facenewsshort" id="facenewsshort">
+					Vừa qua Website này đã được công nhận là website đẹp nhất thế giới vì đơn giản nó được chuyên gia DUCGAOGAO....<br /><i style="color: blue;">read more</i>
+				</div>
+			</div>
+			<div style="top:490;" class="facenews" id="facenews-6">
+				&nbspNgười sói trói người nhện
+				<div class="backgroundnews" id="backgroundnew">
+					
+				</div>
+				<div class="facenewsshort" id="facenewsshort">
+					Vừa qua Website này đã được công nhận là website đẹp nhất thế giới vì đơn giản nó được chuyên gia DUCGAOGAO....<br /><i style="color: blue;">read more</i>
+				</div>
+			</div>
+			<div style="top:570;" class="facenews" id="facenews-7">
+				&nbspNgười nhện nện người dơi
+				<div class="backgroundnews" id="backgroundnews">
+					
+				</div>
+			</div>
+		</div>
+		
+		
+		
+		
+		<!--forum area-->
+		<div class="forumarea" id="forumarea">
+			<img class="arrowforum" id="arrowforum" src="img/arrow.png" />
+			<img class="logoforum" id="logoforum" src="img/forum.jpg"/>	
+			<div class="backgroundforum" id="backgroundforum">
+				<img style="width: 780px; height: auto"src="img/4rumexample.PNG">
+			</div>	
+		</div>
+	</body>
+</html>
