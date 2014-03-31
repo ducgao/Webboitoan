@@ -5,7 +5,96 @@
 		<script src="js/jquery.min.js"></script>
 		<script src="js/jQueryRotate.js"></script>
 		<script>
+			function openbox(boxid){
+					var id = "#" + boxid;
+					alert($(id).text());
+			}
 			$(document).ready(function(){
+				$("#backforum").click(function(){
+					$(this).fadeOut();
+					$("#threads").fadeOut(300);
+					setTimeout(function(){
+						$(".box").fadeIn();
+					},300);
+					$("#headforumavatar").animate({left:20},500);
+					$("#headforumname").animate({left:80},500);
+					$("#accountsettingoption").animate({left:25},500);
+					$("#accountsettinglogout").animate({left:25},500);
+					$("#lineofaccountoption").animate({left:20},500);
+				});
+				$(".boxtitle").click(function(){
+					$(".box").fadeOut(300);
+					$("#headforumavatar").animate({left:80},200);
+					$("#headforumname").animate({left:140},200);
+					$("#accountsettingoption").animate({left:85},200);
+					$("#accountsettinglogout").animate({left:85},200);
+					$("#lineofaccountoption").animate({left:80},200);
+					setTimeout(function(){
+						$("#backforum").fadeIn();
+					},200);
+					setTimeout(function(){
+						$("#threads").fadeIn();
+					},300);
+				});
+				function loaddatatoaccountsetting(){
+					alert("run loaddataacountsetting()");
+				}
+				$("#closeaccountsetting").click(function(){
+					$("#accountsetting").fadeOut();
+				});
+				function forumlogout(){
+					alert("run forumlogout()");
+					$("#lineofaccountoption").fadeOut(300);
+					$("#accountsettingoption").fadeOut(300);
+					$("#accountsettinglogout").fadeOut(300);
+					setTimeout(function(){
+						$("#lineofaccountoption").css("height","0");
+						$("#accountsettingoption").css("width","0");
+						$("#accountsettinglogout").css("width","0");
+					},300);
+				}
+				$("#accountsettinglogout").click(function(){
+					forumlogout();
+				});
+				$("#accountsettingoption").click(function(){
+					$("#accountsetting").fadeIn();
+					loaddatatoaccountsetting();
+					$("#lineofaccountoption").fadeOut(300);
+					$("#accountsettingoption").fadeOut(300);
+					$("#accountsettinglogout").fadeOut(300);
+					setTimeout(function(){
+						$("#lineofaccountoption").css("height","0");
+						$("#accountsettingoption").css("width","0");
+						$("#accountsettinglogout").css("width","0");
+					},300);
+					
+				});
+				var checkclickforumavatar;
+				checkclickforumavatar = 0;
+				$("#headforumavatar").click(function(){
+					
+					if(checkclickforumavatar == 0){
+						checkclickforumavatar= 1;
+						$("#lineofaccountoption").css("display","inline");
+						$("#accountsettingoption").css("display","inline");
+						$("#accountsettinglogout").css("display","inline");
+						$("#lineofaccountoption").animate({height: 80},300);
+						setTimeout(function(){
+							$("#accountsettingoption").animate({width: 150},300);
+							$("#accountsettinglogout").animate({width: 150},300);
+						},300);
+					}else{
+						checkclickforumavatar= 0;
+						$("#lineofaccountoption").fadeOut(300);
+						$("#accountsettingoption").fadeOut(300);
+						$("#accountsettinglogout").fadeOut(300);
+						setTimeout(function(){
+							$("#lineofaccountoption").css("height","0");
+							$("#accountsettingoption").css("width","0");
+							$("#accountsettinglogout").css("width","0");
+						},300);
+					}
+				});
 				function faceoff(){
 					$("#arrowface").rotate({animateTo:180});
 					$("#facebookarea").animate({left: -250},"fast","swing");
@@ -104,7 +193,12 @@
 		</script>
 	</head>
 	<body>
-		<img class="parallax" id="parallax" src="img/bg.jpg" />
+		<img class="parallax" id="parallax" src="img/bg.png" />
+		<!--main area
+		<video id="video_background" preload="auto" autoplay="true" loop="loop" muted="muted" volume="0"> 
+			<source src="img/video-background.mp4" type="video/mp4"> 
+			Video not supported
+		</video>-->
 		<!--main area-->
 		<!--
 		<div class="btnboituvi" id="btnboituvi">
@@ -120,7 +214,7 @@
 			<div class="headface" id="headface">
 				<img class="headfaceavatar" id="headfaceavatar" src="img/avatar.jpg" />
 				<div class="headfacename" id="headfacename">
-					Ông Nội
+					Ông Nội 
 				</div>
 			</div>
 			<div style="top:90;" class="facenews" id="facenews-1">
@@ -193,7 +287,304 @@
 			<img class="arrowforum" id="arrowforum" src="img/arrow.png" />
 			<img class="logoforum" id="logoforum" src="img/forum.jpg"/>	
 			<div class="backgroundforum" id="backgroundforum">
-				<img style="width: 780px; height: auto"src="img/4rumexample.PNG">
+				<!--Avatar Forum-->
+				<img class="headforumavatar" id="headforumavatar" src="img/avatar.jpg"/>
+				<!--When click on Avatar Forum-->
+				<div class="lineofaccountoption" id="lineofaccountoption">	
+				</div>
+				<div class="accountsettingoption" id="accountsettingoption">
+					Cài Đặt
+				</div>
+				<div class="accountsettinglogout" id="accountsettinglogout">
+					Đăng Xuất
+				</div>
+				
+				<!--Name Forum-->
+				<div class="headforumname" id="headforumname">
+					Ông Nội
+				</div>
+				
+				<!--Notification Forum-->
+				<div class="headforumnotification" id="headforumnotification">
+					<img class="notification" id="notification" src="img/notification.png"/>
+					<img class="message" id="message" src="img/message.png"/>
+				</div>
+				
+				<!--Account Setting-->
+					<div class="accountsetting" id="accountsetting">
+						<img class="closeaccountsetting" id="closeaccountsetting" src="img/close.png"  />
+					</div>
+				
+				<!--Main Forum-->
+				<div class="mainforum" id="mainforum">
+					
+					<!--Boxs-->
+					<div class="box" id="box1">
+						<div class="boxtitle" id="boxtitle1" onclick="openbox('boxtitle1');">
+							Nội Quy - Thông Báo
+						</div>
+						<div class="thongtinbox" id="thongtinbox">
+							Những thông báo nội quy và quy định mới nhất của diễn đàn sẽ được post ở đây.
+						</div>
+						<div class="chitietbox" id="chitietbox">
+							Chủ đề: 4213<br />Bài viêt: 41213
+						</div>
+						<div class="newestthreat">
+							<div class="newestthreattitle">
+								Thông báo về nội quy post bài trong forum
+							</div>
+							<div class="newestthreatsender">
+								Admin
+							</div>
+							<div class="newestthreattime">
+								00:00
+							</div>
+						</div>
+						<div class="lineofbox">
+								
+							</div>
+					</div>
+					<div class="box" id="box2">
+						<div class="boxtitle" id="boxtitle2" onclick="openbox('boxtitle3');">
+							Hướng Dẫn Sử Dụng Diễn Đàn Bói Toán
+						</div>
+						<div class="thongtinbox" id="thongtinbox">
+							Nơi hỗ trợ, hướng dẫn cách sử dụng diễn đàn Bói Toán đúng mục đích 
+						</div>
+						<div class="chitietbox" id="chitietbox">
+							Chủ đề: 4213<br />Bài viêt: 41213
+						</div>
+						<div class="newestthreat">
+							<div class="newestthreattitle">
+								Hướng dẫn sử dụng diễn đàn cho người mới,
+							</div>
+							<div class="newestthreatsender">
+								Admin
+							</div>
+							<div class="newestthreattime">
+								00:00
+							</div>
+						</div>
+						<div class="lineofbox">
+								
+							</div>
+					</div>
+					
+					<div class="box" id="box3">
+						<div class="boxtitle" id="boxtitle3" onclick="openbox('boxtitle3');">
+							Sự Kiện - Hoạt Động Chung
+						</div>
+						<div class="thongtinbox" id="thongtinbox">
+							Các hoạt động Online, Offline của các thành viên như : Thảo luận chuyên đề, họp mặt, thể thao, giải trí v.v...
+						</div>
+						<div class="chitietbox" id="chitietbox">
+							Chủ đề: 4213<br />Bài viêt: 41213
+						</div>
+						<div class="newestthreat">
+							<div class="newestthreattitle">
+								Thông báo chi tiết ngày offline.
+							</div>
+							<div class="newestthreatsender">
+								Admin
+							</div>
+							<div class="newestthreattime">
+								00:00
+							</div>
+						</div>
+						<div class="lineofbox">
+								
+							</div>
+					</div>
+					
+					<div class="box" id="box">
+						<div class="boxtitle" id="boxtitle">
+							Nội Quy - Thông Báo
+						</div>
+						<div class="thongtinbox" id="thongtinbox">
+							Những thông báo nội quy và quy định mới nhất của diễn đàn sẽ được post ở đây.
+						</div>
+						<div class="chitietbox" id="chitietbox">
+							Chủ đề: 4213<br />Bài viêt: 41213
+						</div>
+						<div class="newestthreat">
+							<div class="newestthreattitle">
+								Thông báo về việc nội quy post bài trong forum
+							</div>
+							<div class="newestthreatsender">
+								Admin
+							</div>
+							<div class="newestthreattime">
+								00:00
+							</div>
+						</div>
+						<div class="lineofbox">
+								
+							</div>
+					</div>
+					
+					<div class="box" id="box">
+						<div class="boxtitle" id="boxtitle">
+							Nội Quy - Thông Báo
+						</div>
+						<div class="thongtinbox" id="thongtinbox">
+							Những thông báo nội quy và quy định mới nhất của diễn đàn sẽ được post ở đây.
+						</div>
+						<div class="chitietbox" id="chitietbox">
+							Chủ đề: 4213<br />Bài viêt: 41213
+						</div>
+						<div class="newestthreat">
+							<div class="newestthreattitle">
+								Thông báo về việc nội quy post bài trong forum
+							</div>
+							<div class="newestthreatsender">
+								Admin
+							</div>
+							<div class="newestthreattime">
+								00:00
+							</div>
+						</div>
+						<div class="lineofbox">
+								
+							</div>
+					</div>
+					
+					<div class="box" id="box">
+						<div class="boxtitle" id="boxtitle">
+							Nội Quy - Thông Báo
+						</div>
+						<div class="thongtinbox" id="thongtinbox">
+							Những thông báo nội quy và quy định mới nhất của diễn đàn sẽ được post ở đây.
+						</div>
+						<div class="chitietbox" id="chitietbox">
+							Chủ đề: 4213<br />Bài viêt: 41213
+						</div>
+						<div class="newestthreat">
+							<div class="newestthreattitle">
+								Thông báo về việc nội quy post bài trong forum
+							</div>
+							<div class="newestthreatsender">
+								Admin
+							</div>
+							<div class="newestthreattime">
+								00:00
+							</div>
+						</div>
+						<div class="lineofbox">
+								
+							</div>
+					</div>
+					
+					<div class="box" id="box">
+						<div class="boxtitle" id="boxtitle">
+							Nội Quy - Thông Báo
+						</div>
+						<div class="thongtinbox" id="thongtinbox">
+							Những thông báo nội quy và quy định mới nhất của diễn đàn sẽ được post ở đây.
+						</div>
+						<div class="chitietbox" id="chitietbox">
+							Chủ đề: 4213<br />Bài viêt: 41213
+						</div>
+						<div class="newestthreat">
+							<div class="newestthreattitle">
+								Thông báo về việc nội quy post bài trong forum
+							</div>
+							<div class="newestthreatsender">
+								Admin
+							</div>
+							<div class="newestthreattime">
+								00:00
+							</div>
+						</div>
+						<div class="lineofbox">
+								
+							</div>
+					</div>
+					
+					<div class="box" id="box">
+						<div class="boxtitle" id="boxtitle">
+							Nội Quy - Thông Báo
+						</div>
+						<div class="thongtinbox" id="thongtinbox">
+							Những thông báo nội quy và quy định mới nhất của diễn đàn sẽ được post ở đây.
+						</div>
+						<div class="chitietbox" id="chitietbox">
+							Chủ đề: 4213<br />Bài viêt: 41213
+						</div>
+						<div class="newestthreat">
+							<div class="newestthreattitle">
+								Thông báo về việc nội quy post bài trong forum
+							</div>
+							<div class="newestthreatsender">
+								Admin
+							</div>
+							<div class="newestthreattime">
+								00:00
+							</div>
+						</div>
+						<div class="lineofbox">
+								
+							</div>
+					</div>
+					
+					<div class="box" id="box">
+						<div class="boxtitle" id="boxtitle">
+							Nội Quy - Thông Báo
+						</div>
+						<div class="thongtinbox" id="thongtinbox">
+							Những thông báo nội quy và quy định mới nhất của diễn đàn sẽ được post ở đây.
+						</div>
+						<div class="chitietbox" id="chitietbox">
+							Chủ đề: 4213<br />Bài viêt: 41213
+						</div>
+						<div class="newestthreat">
+							<div class="newestthreattitle">
+								Thông báo về việc nội quy post bài trong forum
+							</div>
+							<div class="newestthreatsender">
+								Admin
+							</div>
+							<div class="newestthreattime">
+								00:00
+							</div>
+						</div>
+						<div class="lineofbox">
+								
+							</div>
+					</div>
+					
+					<div class="box" id="box">
+						<div class="boxtitle" id="boxtitle">
+							Nội Quy - Thông Báo
+						</div>
+						<div class="thongtinbox" id="thongtinbox">
+							Những thông báo nội quy và quy định mới nhất của diễn đàn sẽ được post ở đây.
+						</div>
+						<div class="chitietbox" id="chitietbox">
+							Chủ đề: 4213<br />Bài viêt: 41213
+						</div>
+						<div class="newestthreat">
+							<div class="newestthreattitle">
+								Thông báo về việc nội quy post bài trong forum
+							</div>
+							<div class="newestthreatsender">
+								Admin
+							</div>
+							<div class="newestthreattime">
+								00:00
+							</div>
+						</div>
+						<div class="lineofbox">
+								
+						</div>
+					</div>
+				
+					
+				</div>
+				<!--Thread-->
+				<img class="backforum" id="backforum" src="img/arrowforum.jpg"/>
+				<div class="threads" id="threads">
+						
+				</div>
 			</div>	
 		</div>
 	</body>

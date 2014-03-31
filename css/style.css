@@ -5,6 +5,7 @@ body{
 	overflow:hidden;
 	background-attachment: fixed;
 }
+
 @font-face
 {
 font-family: webfont;
@@ -14,6 +15,7 @@ src: url('font/calibri.ttf');
 	position: absolute;
 	width: 100%;
 	height: auto;
+	bottom: 0;
 }
 .facebookarea{
 	z-index:0;
@@ -170,4 +172,216 @@ src: url('font/calibri.ttf');
 	50%  {left:10px; top:20px;}
 	50%  {left:0px; top:10px;}
 	100% {left:0px; top:0px;}
+}
+.headforumavatar{
+	z-index:2;
+	position: absolute;
+	top: 20;
+	left: 20;
+	width: 50px;
+	height: 50px;
+	cursor: pointer;
+	
+}
+.headforumname{
+	z-index:2;
+	position: absolute;
+	top: 20;
+	left: 80;
+	font-family: webfont;
+	font-size: 38;
+	color: black;
+	width: 400;
+}
+.notification{
+	position: absolute;
+	top: 0;
+	left:0;
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+}
+.message{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+}
+.headforumnotification{
+	position: absolute;
+	top: 20px;
+	right: 20;
+	width: 80;
+	
+}
+.lineofaccountoption{
+	position: absolute;
+	top: 75px;
+	left: 20px;
+	width: 1;
+	height: 0;
+	background-color: black;
+}
+.accountsettingoption{
+	position: absolute;
+	top: 80;
+	left: 25;
+	height: 40;
+	width: 0px;
+	font-family: webfont;
+	font-size: 25;
+	color: white;
+	text-overflow:clip; 
+	overflow:hidden;
+	white-space:nowrap; 
+	cursor: pointer;
+	z-index: 10;
+	background-color: black;
+	text-indent:10px;
+}
+.accountsettinglogout{
+	position: absolute;
+	top: 120;
+	left: 25;
+	width: 0px;
+	font-family: webfont;
+	font-size: 25;
+	color: white;
+	text-overflow:clip; 
+	overflow:hidden;
+	white-space:nowrap;
+	cursor: pointer; 
+	z-index: 10;
+	background-color: black;
+	text-indent:10px;
+}
+.mainforum{
+	position: absolute;
+	top:100;
+	left: 40;
+	width: 1230;
+	height: 550;
+	overflow: auto;
+	background-color:white; 
+}
+.mainforum::-webkit-scrollbar{
+	width:6px;
+	background-color:transperant;
+	} 
+.mainforum::-webkit-scrollbar-thumb{
+	background-color:black;
+	border-radius:10px;
+	}
+}
+.box{
+	width: 1215;
+	height: 100;
+	background-color: white;
+	margin: auto;
+}
+.boxtitle{
+	font-family: webfont;
+	font-size: 30;
+	cursor: pointer;
+	width: 500;
+}
+.thongtinbox{
+	font-family: webfont;
+	font-size: 15;
+	cursor: context-menu;
+	width: 400;
+	padding-left: 10;
+}
+.chitietbox{
+	margin-left: 550;
+	margin-top: -55;
+	font-family: webfont;
+	font-size: 15;
+	cursor: context-menu;
+	width: 100px;
+	height: auto;
+	text-align: right;
+}
+.newestthreat{
+	margin-left: 680;
+	margin-top: -42;
+	font-family: webfont;
+	font-size: 15;
+	cursor: pointer;
+	width: 500;
+	height:75;
+}
+.newestthreattitle{
+	font-size: 20;
+	text-overflow: ellipsis; 
+	overflow:hidden;
+	white-space:nowrap;
+	cursor: pointer; 
+}
+.lineofbox{
+	margin-top: 8;
+	margin-left: 12;
+	height: 1px;
+	width: 1000px;
+	background-color: black;
+}
+#video_background { 
+	position: absolute;
+	bottom: -150px; 
+	right: 0px; 
+	min-width: 100%; 
+	min-height: 100%; 
+	width: auto;
+	height: auto;
+	z-index: -1000;
+	overflow: hidden
+}
+.accountsetting{
+	display: none;
+	z-index: 10;
+	position: absolute;
+	width:60%;
+	height: 80%;
+	top: 75;
+	left:200;
+	background-color: white;
+	box-shadow: 0px 0px 20px 1px #888888;
+}
+.closeaccountsetting{
+	position: absolute;
+	top: 5;
+	right: 5;
+	width: 15px;
+	height:15px;
+	cursor: pointer;
+	opacity: 0;
+	-webkit-transition:opacity 0.2s; /* For Safari 3.1 to 6.0 */
+	transition:opacity 0.2s;
+}
+.closeaccountsetting:hover{
+	opacity: 1;
+}
+.threads{
+	display: none;
+	position: absolute;
+	top:100;
+	left: 40;
+	width: 1230;
+	height: 550;
+	overflow: auto;
+	background-color:black;
+}
+.backforum{
+	display: none;
+	position: absolute;
+	top: 25;
+	left: 25;
+	width: 40;
+	height: 40px;
+	-ms-transform: rotate(180deg); /* IE 9 */
+	-webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+	transform: rotate(180deg);
+	cursor: pointer;
 }
