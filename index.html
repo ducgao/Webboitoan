@@ -5,17 +5,527 @@
 		<script src="js/jquery.min.js"></script>
 		<script src="js/jQueryRotate.js"></script>
 		<script>
-			function openbox(boxid){
-					var id = "#" + boxid;
-					alert($(id).text());
+				var checklogin = "checkkkkkkkk";
+				var userinfo = new Array();
+				function showthread(id_thread){
+					$(document).ready(function(){
+						$("#threads").fadeOut(300);
+						$("#backforum").fadeOut();
+						$("#backthreads").fadeIn(300);
+						setTimeout(function(){
+							$("#thread").fadeIn();
+						},300);
+						
+					});
+				}
+				function fcshowuserinfo(url){
+					userinfo[0] = "";
+					userinfo[1] = "";
+					userinfo[2] = "";
+					userinfo[3] = "";
+					userinfo[4] = "";
+					var next=0;
+					var xmlhttp;
+					if (window.XMLHttpRequest){
+				   		xmlhttp=new XMLHttpRequest();
+					}else{
+						xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+					}
+					xmlhttp.onreadystatechange=function()
+					  {
+					  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+					    {
+					    	for(var i=0; i<xmlhttp.responseText.length; i++){
+						    	if(xmlhttp.responseText.charAt(i) != "/"){
+						    		userinfo[next] = userinfo[next] + xmlhttp.responseText.charAt(i);
+						    	}else{next++;}
+					   		 }
+					   		 document.getElementById("accountinfoname").innerHTML = userinfo[0];
+					   		 document.getElementById("accountinfomail").innerHTML = "Email: " + userinfo[1];
+					   		 document.getElementById("accountinfophone").innerHTML = "Số Điện Thoại: " + userinfo[2];
+					   		 document.getElementById("accountinfoyear").innerHTML = "Năm Sinh: " + userinfo[3];
+					   		 document.getElementById("accountinfoborn").innerHTML = "Nơi Sinh: " + userinfo[4];
+						}
+						   
+
+					    
+					 }
+					xmlhttp.open("GET",url,true);
+					xmlhttp.send();
+				}
+				function showuserinfo(username){
+					$(document).ready(function(){
+						$("#accountsetting").fadeOut(300);
+						setTimeout(function(){
+							$(".accountinfo").css("display","inline");
+							$(".accountinfoavatar").css("display","inline");
+							$("#accountinfosend").css("display","inline");
+							$(".logininput").css("display","none");
+							$(".registerinput").css("display","none");
+							$(".accountsettinginput").css("display","none");
+							$(".styleaccountsettinginput").css("display","none");
+							$("#submitregister").css("display","none");
+							$("#accountsettinguploadimg").css("display","none");
+							$("#accountsettingchooseimg").css("display","none");
+							$("#accountsettingclose").css("display","none");
+							$("#accountsettingchange").css("display","none");
+							$(".accountsettingavatar").css("display","none");
+							$("#submitlogin").css("display","none");
+							$("#accountsetting").css({"top":"75","left":"100","width":"1100","height":"300px"});
+							var url="allfunction.php?fc=showuserinfo&username=" + username + "";
+							fcshowuserinfo(url);
+							$("#accountsetting").fadeIn();
+						},300);
+						
+					});
+				}
+				function openbox(boxid){
+					var url="allfunction.php?fc=showthreads&box="+boxid+"";
+					var xmlhttp;
+					if (window.XMLHttpRequest){
+				   		xmlhttp=new XMLHttpRequest();
+					}else{
+						xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+					}
+					xmlhttp.onreadystatechange=function()
+					  {
+					  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+					    {
+						    	showthreads();
+						}
+						   
+
+					    
+					 }
+					xmlhttp.open("GET",url,true);
+					xmlhttp.send();
+					
+				}
+				
+				function showthreads(){
+					var xmlhttp;
+					if (window.XMLHttpRequest){
+				   		xmlhttp=new XMLHttpRequest();
+					}else{
+						xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+					}
+					xmlhttp.onreadystatechange=function()
+					  {
+					  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+					    {
+						    	document.getElementById("threads").innerHTML=xmlhttp.responseText;
+						}
+						   
+
+					    
+					 }
+					xmlhttp.open("GET",'showthreads.txt',true);
+					xmlhttp.send();
+					
+				}
+				
+				
+				function updateuser(url){
+					var xmlhttp;
+					if (window.XMLHttpRequest){
+				   		xmlhttp=new XMLHttpRequest();
+					}else{
+						xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+					}
+					xmlhttp.onreadystatechange=function()
+					  {
+					  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+					    {
+						    	document.getElementById("accountsettingnotification").innerHTML=xmlhttp.responseText;
+						}
+						   
+
+					    
+					 }
+					xmlhttp.open("GET",url,true);
+					xmlhttp.send();
+					
+				}
+				
+				function checkchangepass(){
+					if(document.getElementById("checkchangepass").checked == false){
+						document.getElementById("txtaccountsettinginputoldpass").value = "";
+						document.getElementById("txtaccountsettinginputnewpass").value = "";
+						document.getElementById("txtaccountsettinginputrepass").value = "";
+						document.getElementById("txtaccountsettinginputoldpass").disabled = true;
+						document.getElementById("txtaccountsettinginputnewpass").disabled = true;
+						document.getElementById("txtaccountsettinginputrepass").disabled = true;
+					}else{
+						document.getElementById("txtaccountsettinginputoldpass").disabled = false;
+						document.getElementById("txtaccountsettinginputnewpass").disabled = false;
+						document.getElementById("txtaccountsettinginputrepass").disabled = false;
+					};
+				}
+				
+				function checkchangephone(){
+					if(document.getElementById("checkchangephone").checked == false){
+						document.getElementById("txtaccountsettinginputphone").disabled= true;
+					}else{
+						document.getElementById("txtaccountsettinginputphone").disabled= false;}
+				}
+				
+				function checkchangeyear(){
+					if(document.getElementById("checkchangeyear").checked == false){
+						document.getElementById("comboaccountsettinginputyear").disabled= true;
+					}else{document.getElementById("comboaccountsettinginputyear").disabled= false;}
+				}
+				
+				function checkchangeborn(){
+					if(document.getElementById("checkchangeborn").checked == false){
+						document.getElementById("comboaccountsettinginputborn").disabled= true;
+					}else{document.getElementById("comboaccountsettinginputborn").disabled= false;}
+				}
+				
+				function loaddatatoaccountsetting(url){
+					document.getElementById("txtaccountsettinginputoldpass").disabled = true;
+					document.getElementById("txtaccountsettinginputnewpass").disabled = true;
+					document.getElementById("txtaccountsettinginputrepass").disabled = true;
+					document.getElementById("txtaccountsettinginputphone").disabled= true;
+					document.getElementById("comboaccountsettinginputyear").disabled= true;
+					document.getElementById("comboaccountsettinginputborn").disabled= true;
+					document.getElementById("txtaccountsettinginputoldpass").value = "";
+					document.getElementById("txtaccountsettinginputnewpass").value = "";
+					document.getElementById("txtaccountsettinginputrepass").value = "";
+					var xmlhttp;
+					var next = 0;
+					userinfo[0]= "";
+					userinfo[1]= "";
+					userinfo[2]= "";
+					userinfo[3]= "";
+					if (window.XMLHttpRequest){
+				   		xmlhttp=new XMLHttpRequest();
+					}else{
+						xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+					}
+					xmlhttp.onreadystatechange=function()
+					  {
+					  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+					    {
+					    	for(var i=0; i<xmlhttp.responseText.length; i++){
+						    	if(xmlhttp.responseText.charAt(i) != "/"){
+						    		userinfo[next] = userinfo[next] + xmlhttp.responseText.charAt(i);
+						    	}else{next++;}
+					   		 }
+						   
+
+					    }
+					  }
+					xmlhttp.open("GET",url,true);
+					xmlhttp.send();
+				}
+			
+				function adduser(url)
+				{
+					var xmlhttp;
+					if (window.XMLHttpRequest){
+				   		xmlhttp=new XMLHttpRequest();
+					}else{
+						xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+					}
+					xmlhttp.onreadystatechange=function()
+					  {
+					  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+					    {
+					    document.getElementById("mainnotification").innerHTML=xmlhttp.responseText;
+					    }
+					  }
+					xmlhttp.open("GET",url,true);
+					xmlhttp.send();
+				}
+				function login(url)
+				{
+					
+					var xmlhttp;
+					if (window.XMLHttpRequest){
+				   		xmlhttp=new XMLHttpRequest();
+					}else{
+						xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+					}
+					xmlhttp.onreadystatechange=function()
+					  {
+					  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+					    {
+					    	if(xmlhttp.responseText == "true"){
+					    		checklogin = "true";
+					    	}else{
+					    		checklogin = "false";
+					    		document.getElementById("accountsettingnotification").innerHTML = "Password/Username Không Đúng";
+					    	}
+					    }
+					  }
+					xmlhttp.open("GET",url,true);
+					xmlhttp.send();
+				}
+				$(document).ready(function(){
+					var url;
+					$("#backthreads").click(function(){
+						$(this).fadeOut();
+						$("#backforum").fadeIn();
+						$("#thread").fadeOut(300);
+						setTimeout(function(){
+							$("#threads").fadeIn();
+							
+						},300);
+						
+					});
+					$("#accountsettingchange").click(function(){
+						var username = $("#txtaccountsettinginputname").val();
+						var oldpass = $("#txtaccountsettinginputoldpass").val();
+						var newpass = $("#txtaccountsettinginputnewpass").val();
+						var repass = $("#txtaccountsettinginputrepass").val();
+						var phone = $("#txtaccountsettinginputphone").val();
+						var year = $("#checkchangeyear option:selected").text();
+						var born = $("#checkchangeborn option:selected").text();
+						if(!($("#checkchangepass").is(":checked"))){
+							oldpass = "";
+						}
+						if(!($("#checkchangephone").is(":checked"))){
+							phone = "";
+						}
+						if(!($("#checkchangeyear").is(":checked"))){
+							year = "";
+						}
+						if(!($("#checkchangeborn").is(":checked"))){
+							born = "";
+						}
+						url="allfunction.php?fc=updateuser&username=" + username + "&oldpass=" + oldpass + "&newpass=" + newpass + "&repass=" + repass + "&phone=" + phone + "&year=" + year + "&born=" + born +"";
+						updateuser(url);
+					});
+					$("#accountsettingclose").click(function(){
+						$("#accountsetting").fadeOut();
+					});
+					$("#submitlogin").click(function(){
+				
+						var user = $("#usernamelogin").val();
+						var pass = $("#passlogin").val();
+						url = "allfunction.php?fc=login&username=" + user + "&password=" + pass + "";
+						
+						login(url);
+						setTimeout(function(){
+							if(checklogin == "true"){
+							$("#accountsetting").fadeOut(200);
+							$("#headforumlogin").fadeOut(200);
+							$("#headforumregister").fadeOut(200);
+							setTimeout(function(){
+								$("#headforumavatar").fadeIn(200);
+								$("#headforumname").html(user);
+								$("#headforumname").fadeIn(200);
+							},200);
+							}
+						},100);
+						
+						
+					});
+					$("#usernameregister").keyup(function(){
+						if($("#usernameregister").val().length <7){
+							document.getElementById('alertuser').innerHTML="!";
+						}else{
+							url = "allfunction.php?fc=checkuser&user=" + $("#usernameregister").val() +"";
+							$("#alertuser").load(url);
+						}
+					});
+					$("#submitregister").click(function(){
+						//checkregister();
+						if(checkregister()){
+							$("#accountsetting").fadeOut(300);
+							setTimeout(function(){
+								var username = $('#usernameregister').val(); 
+								var pass = $('#passregister').val();
+								var email = $('#mailregister').val(); 
+								 
+								var phone = $('#phoneregister').val();
+								var year = $("#yearregister option:selected").text();
+								var born = $("#bornregister option:selected").text();
+								url = "allfunction.php?fc=adduser&username=" + username + "&password=" + pass + "&email=" + email + "&phone=" + phone + "&year=" + year + "&born=" + born + "";
+								adduser(url);
+								$("#notificationofsystem").fadeIn();
+							},300);
+						}
+					});
+				});
+		</script>
+		
+		<script>
+			
+			function justNumber(evt){
+				var charCode = (evt.which) ? evt.which : event.keyCode;
+ 				if (charCode > 31 && (charCode < 48 || charCode > 57))
+ 				{return false;}
+				 return true;
+			}
+			function checkregister(){
+				document.getElementById('alertpass').innerHTML="";
+				document.getElementById('alertrepass').innerHTML = "";
+				document.getElementById('alertmail').innerHTML = "";
+				document.getElementById('alertremail').innerHTML = "";
+				
+				var error = 0;
+				var user = document.getElementById('alertuser').innerHTML;
+				var pass = document.getElementById('passregister').value;
+				var repass = document.getElementById('repassregister').value;
+				var mail = document.getElementById('mailregister').value;
+				var remail = document.getElementById('remailregister').value;
+				
+				var checkmail =  /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+				if(user != ""){
+					error = 1;
+				}
+				if(pass.length <7){
+					document.getElementById('alertpass').innerHTML="!";
+					error = 1;
+				}
+				if(pass != repass){
+					document.getElementById('alertrepass').innerHTML="!";
+					error = 1;
+				}
+				if(checkmail.test(mail) == false){
+					document.getElementById('alertmail').innerHTML="!";
+					error = 1;
+				}
+				if(mail != remail){
+					document.getElementById('alertremail').innerHTML="!";
+					error = 1;
+				}
+				
+				if(error == 1 ){
+					return false;
+				}else{return true;}
+			}
+				//document.getElementById('alertuser').innerHTML="W3Schools";
+			
+			function dangnhap(){
+				alert("run dangnhap()");
 			}
 			$(document).ready(function(){
+				var inputvalue;
+				
+				$(".registerinput").focusin(function(){
+					inputvalue = $(this).val();
+					if($(this).attr("id") == "passregister"){
+						$(this).replaceWith('<input class="registerinput" id="passregister" type="password">');
+					}
+					if($(this).attr("id") == "repassregister"){
+						$(this).replaceWith('<input class="registerinput" id="repassregister" type="password">');
+					}
+					$(this).val("");
+				});
+				$("#usernameregister").focusout(function(){
+					if($(this).val()==""){
+						$(this).val(inputvalue);
+					}
+				});
+				$("#passregister").focusout(function(){
+					if($(this).val()==""){
+						$(this).val(inputvalue);
+					}
+				});
+				$("#repassregister").focusout(function(){
+					if($(this).val()==""){
+						$(this).val(inputvalue);
+					}
+				});
+				$("#mailregister").focusout(function(){
+					if($(this).val()==""){
+						$(this).val(inputvalue);
+					}
+				});
+				$("#remailregister").focusout(function(){
+					if($(this).val()==""){
+						$(this).val(inputvalue);
+					}
+				});
+				
+				
+				$("#phoneregister").focusout(function(){
+					if($(this).val()==""){
+						$(this).val(inputvalue);
+					}
+				});
+				$("#yearregister").focusout(function(){
+					if($(this).val()==""){
+						$(this).val(inputvalue);
+					}
+				});
+				$("#bornregister").focusout(function(){
+					if($(this).val()==""){
+						$(this).val(inputvalue);
+					}
+				});
+				$("#passlogin").focusin(function(){
+					$(this).replaceWith('<input type="password" class="logininput" id="passlogin">');
+				});
+				$("#usernamelogin").focusin(function(){
+					$(this).replaceWith('<input style="margin-top: 25px" type="text" class="logininput" id="usernamelogin">');
+				});
+				$("#headforumlogin").click(function(){
+					$("#accountsetting").fadeOut(300);
+					setTimeout(function(){
+						$(".accountinfo").css("display","none");
+						$(".accountinfoavatar").css("display","none");
+						$("#accountinfosend").css("display","none");
+						$(".registerinput").css("display","none");
+						$("#submitregister").css("display","none");
+						$(".logininput").css("display","inline");
+						$("#submitlogin").css("display","inline");
+						$("#accountsetting").css({"height":"160","width":"340","top":"20","left":"150"});
+						$("#accountsettingnotification").css({"display":"inline","top":"100","left":"80"});
+						$("#accountsettingnotification").text("");
+						$("#accountsetting").fadeIn(300);
+						document.getElementById('alertpass').innerHTML="";
+						document.getElementById('alertrepass').innerHTML = "";
+						document.getElementById('alertmail').innerHTML = "";
+						document.getElementById('alertremail').innerHTML = "";
+					
+					},300);
+					
+				});
+				$("#loginafterregister").click(function(){
+					$("#notificationofsystem").fadeOut(300);
+					$("#accountsetting").fadeOut(300);
+					setTimeout(function(){
+						$(".registerinput").css("display","none");
+						$("#submitregister").css("display","none");
+						$(".logininput").css("display","inline");
+						$("#submitlogin").css("display","inline");
+						$("#accountsetting").css({"height":"160","width":"340","top":"20","left":"150"});
+						$("#accountsetting").fadeIn(300);
+						document.getElementById('alertpass').innerHTML="";
+						document.getElementById('alertrepass').innerHTML = "";
+						document.getElementById('alertmail').innerHTML = "";
+						document.getElementById('alertremail').innerHTML = "";
+					
+					},300);
+					
+				});
+				$("#headforumregister").click(function(){
+					$("#accountsetting").fadeOut(300);
+					setTimeout(function(){
+						$(".accountinfo").css("display","none");
+						$(".accountinfoavatar").css("display","none");
+						$("#accountinfosend").css("display","none");
+						$(".registerinput").css("display","inline");
+						$("#submitregister").css("display","inline");
+						$(".logininput").css("display","none");
+						$("#submitlogin").css("display","none");
+						$("#accountsetting").css({"height":"400","width":"340","top":"80","left":"20"});
+						$("#accountsetting").fadeIn(300);
+						
+					},300);
+					
+				});
 				$("#backforum").click(function(){
 					$(this).fadeOut();
 					$("#threads").fadeOut(300);
 					setTimeout(function(){
 						$(".box").fadeIn();
+						$(".catalog").fadeIn();
 					},300);
+					$("#headforumregister").animate({left:20},500);
 					$("#headforumavatar").animate({left:20},500);
 					$("#headforumname").animate({left:80},500);
 					$("#accountsettingoption").animate({left:25},500);
@@ -24,6 +534,8 @@
 				});
 				$(".boxtitle").click(function(){
 					$(".box").fadeOut(300);
+					$(".catalog").fadeOut(300);
+					$("#headforumregister").animate({left:140},500);
 					$("#headforumavatar").animate({left:80},200);
 					$("#headforumname").animate({left:140},200);
 					$("#accountsettingoption").animate({left:85},200);
@@ -36,17 +548,17 @@
 						$("#threads").fadeIn();
 					},300);
 				});
-				function loaddatatoaccountsetting(){
-					alert("run loaddataacountsetting()");
-				}
+				
 				$("#closeaccountsetting").click(function(){
 					$("#accountsetting").fadeOut();
 				});
 				function forumlogout(){
-					alert("run forumlogout()");
+					checklogin = "false";
 					$("#lineofaccountoption").fadeOut(300);
 					$("#accountsettingoption").fadeOut(300);
 					$("#accountsettinglogout").fadeOut(300);
+					$("#headforumavatar").fadeOut(300);
+					$("#headforumname").fadeOut(300);
 					setTimeout(function(){
 						$("#lineofaccountoption").css("height","0");
 						$("#accountsettingoption").css("width","0");
@@ -55,17 +567,63 @@
 				}
 				$("#accountsettinglogout").click(function(){
 					forumlogout();
+					setTimeout(function(){
+						$("#headforumlogin").fadeIn(300);
+						$("#headforumregister").fadeIn(300);
+						$(".accountsettinginput").css("display","none");
+						$(".accountsettingavatar").css("display","none");
+						$("#accountsettinguploadimg").css("display","none");
+						$("#accountsettingchooseimg").css("display","none");
+						$("#accountsettingchange").css("display","none");
+						$("#accountsettingclose").css("display","none");
+					},300);
 				});
 				$("#accountsettingoption").click(function(){
-					$("#accountsetting").fadeIn();
-					loaddatatoaccountsetting();
-					$("#lineofaccountoption").fadeOut(300);
-					$("#accountsettingoption").fadeOut(300);
-					$("#accountsettinglogout").fadeOut(300);
+					$("#accountsetting").fadeOut(300);
 					setTimeout(function(){
-						$("#lineofaccountoption").css("height","0");
-						$("#accountsettingoption").css("width","0");
-						$("#accountsettinglogout").css("width","0");
+						$(".accountinfo").css("display","none");
+						$(".accountinfoavatar").css("display","none");
+						$("#accountinfosend").css("display","none");
+						$("#accountsettingnotification").css({"top":"200","left":"800"});
+						$("#accountsettingnotification").text("");
+						$("#checkchangepass").prop('checked', false);
+						$("#checkchangephone").prop('checked', false);
+						$("#checkchangeyear").prop('checked', false);
+						$("#checkchangeborn").prop('checked', false);
+						$("#accountsetting").fadeOut();
+						$("#accountsetting").css({"top":"75","left":"100","width":"1100","height":"300px"});
+						$(".accountsettinginput").css("display","inline");
+						$(".accountsettingavatar").css("display","inline");
+						$("#accountsettinguploadimg").css("display","inline");
+						$("#accountsettingchooseimg").css("display","inline");
+						$("#accountsettingchange").css("display","inline");
+						$("#accountsettingclose").css("display","inline");
+						$(".registerinput").css("display","none");
+						$("#submitregister").css("display","none");
+						$(".logininput").css("display","none");
+						$("#submitlogin").css("display","none");
+						$("#accountsetting").fadeIn();
+						var user= $("#headforumname").html();
+						url = "allfunction.php?fc=userinfo&username="+user+"";
+						loaddatatoaccountsetting(url);
+						setTimeout(function(){
+							$("#txtaccountsettinginputname").val(user);
+							var phone = userinfo[1];
+							$("#txtaccountsettinginputphone").val(phone);	
+							
+						},1000);
+							
+						
+						$("#lineofaccountoption").fadeOut(300);
+						$("#accountsettingoption").fadeOut(300);
+						$("#accountsettinglogout").fadeOut(300);
+						setTimeout(function(){
+							$("#lineofaccountoption").css("height","0");
+							$("#accountsettingoption").css("width","0");
+							$("#accountsettinglogout").css("width","0");
+						},300);
+						
+						
 					},300);
 					
 				});
@@ -188,6 +746,9 @@
 						parallaxunright();
 					}
 				});
+				$(".threadtitle").click(function(){
+					alert("ád");
+				});
 				
 			});
 		</script>
@@ -219,55 +780,55 @@
 			</div>
 			<div style="top:90;" class="facenews" id="facenews-1">
 				&nbspWeb được công nhận là đẹp nhất
-				<div class="backgroundnews" id="backgroundnew">
+				<div class="backgroundnews">
 					
 				</div>
-				<div class="facenewsshort" id="facenewsshort">
+				<div class="facenewsshort">
 					Vừa qua Website này đã được công nhận là website đẹp nhất thế giới vì đơn giản nó được chuyên gia DUCGAOGAO....<br /><i style="color: blue;">read more</i>
 				</div>
 			</div>
 			<div style="top:170;" class="facenews" id="facenews-2">
 				&nbspĐức được người đẹp hôn
-				<div class="backgroundnews" id="backgroundnew">
+				<div class="backgroundnews">
 					
 				</div>
-				<div class="facenewsshort" id="facenewsshort">
+				<div class="facenewsshort">
 					Vừa qua Website này đã được công nhận là website đẹp nhất thế giới vì đơn giản nó được chuyên gia DUCGAOGAO....<br /><i style="color: blue;">read more</i>
 				</div>
 			</div>
 			<div style="top:250;" class="facenews" id="facenews-3">
 				&nbspTính bị người dân lôi ra đánh
-				<div class="backgroundnews" id="backgroundnew">
+				<div class="backgroundnews">
 					
 				</div>
-				<div class="facenewsshort" id="facenewsshort">
+				<div class="facenewsshort">
 					Vừa qua Website này đã được công nhận là website đẹp nhất thế giới vì đơn giản nó được chuyên gia DUCGAOGAO....<br /><i style="color: blue;">read more</i>
 				</div>
 			</div>
 			<div style="top:330;" class="facenews" id="facenews-4">
 				&nbspĐức bị hotgirl gạ gẫm
-				<div class="backgroundnews" id="backgroundnew">
+				<div class="backgroundnews">
 					
 				</div>
-				<div class="facenewsshort" id="facenewsshort">
+				<div class="facenewsshort">
 					Vừa qua Website này đã được công nhận là website đẹp nhất thế giới vì đơn giản nó được chuyên gia DUCGAOGAO....<br /><i style="color: blue;">read more</i>
 				</div>
 			</div>
 			<div style="top:410;" class="facenews" id="facenews-5">
 				&nbspNgười sắt bắt người sói
-				<div class="backgroundnews" id="backgroundnew">
+				<div class="backgroundnews">
 					
 				</div>
-				<div class="facenewsshort" id="facenewsshort">
+				<div class="facenewsshort">
 					Vừa qua Website này đã được công nhận là website đẹp nhất thế giới vì đơn giản nó được chuyên gia DUCGAOGAO....<br /><i style="color: blue;">read more</i>
 				</div>
 			</div>
 			<div style="top:490;" class="facenews" id="facenews-6">
 				&nbspNgười sói trói người nhện
-				<div class="backgroundnews" id="backgroundnew">
+				<div class="backgroundnews">
 					
 				</div>
-				<div class="facenewsshort" id="facenewsshort">
+				<div class="facenewsshort">
 					Vừa qua Website này đã được công nhận là website đẹp nhất thế giới vì đơn giản nó được chuyên gia DUCGAOGAO....<br /><i style="color: blue;">read more</i>
 				</div>
 			</div>
@@ -289,6 +850,8 @@
 			<div class="backgroundforum" id="backgroundforum">
 				<!--Avatar Forum-->
 				<img class="headforumavatar" id="headforumavatar" src="img/avatar.jpg"/>
+				<img class="headforumregister" id="headforumregister" src="img/sigup.JPG"/>
+				<img class="headforumlogin" id="headforumlogin" src="img/login.JPG"/>
 				<!--When click on Avatar Forum-->
 				<div class="lineofaccountoption" id="lineofaccountoption">	
 				</div>
@@ -304,29 +867,499 @@
 					Ông Nội
 				</div>
 				
-				<!--Notification Forum-->
+<!--Notification Forum-->
 				<div class="headforumnotification" id="headforumnotification">
 					<img class="notification" id="notification" src="img/notification.png"/>
 					<img class="message" id="message" src="img/message.png"/>
 				</div>
+				<div class="notificationofsystem" id="notificationofsystem">
+						<div style="float: left" id="mainnotification">
+
+						</div>
+						<button style="margin-top: -25; margin-left: 220" class="submitstyle" id="loginafterregister">
+							Đăng Nhâp
+						</button>
+				</div>
 				
-				<!--Account Setting-->
+<!--Account Setting-->
 					<div class="accountsetting" id="accountsetting">
 						<img class="closeaccountsetting" id="closeaccountsetting" src="img/close.png"  />
+					<!--if Account Info-->	
+						<img class="accountinfoavatar" src="img/avatar.jpg"/>
+						<div style="top:40; left: 75; font-size: 30" class="accountinfo" id="accountinfoname">
+							
+						</div>
+						<div style="top: 90" class="accountinfo" id="accountinfomail">
+							
+						</div>
+						<div style="top: 120"class="accountinfo" id="accountinfophone">
+							
+						</div>
+						<div style="top: 150" class="accountinfo" id="accountinfoyear">
+							
+						</div>
+						<div style="top: 180" class="accountinfo" id="accountinfoborn">
+							
+						</div>
+						<div  class="accountinfo" style="width: 700; height: 210;top: 20; left:380; background-color: black">
+							
+						</div>
+						<input style="height: 45; width: 600; top: 240; left: 380" class="accountinfo" type="text" />
+						<button style="position: absolute; top: 230; left: 970; height: 45; width: 90" class="submitstyle" id="accountinfosend">
+							Gửi
+						</button>
+						
+						
+						
+					<!--if Account Setting-->
+						
+						<div style="margin-left:54" class="accountsettinginput" id="accountsettinginputname">
+							Tên User:
+							<input style="margin-left: 122" class="styleaccountsettinginput" id="txtaccountsettinginputname" type="text" />
+						</div>
+						<div style="top:40" class="accountsettinginput" id="accountsettinginputoldpass">
+							<input type="checkbox" id="checkchangepass" onchange="checkchangepass()" />
+							Nhập Password Cũ:
+							<input style="margin-left: 59" class="styleaccountsettinginput" id="txtaccountsettinginputoldpass" type="password" disabled="disabled"/>
+						</div>
+						<div style="top:80; margin-left: 54" class="accountsettinginput" id="accountsettinginputnewpass">
+							Nhập Password Mới:
+							<input style="margin-left: 50" class="styleaccountsettinginput" id="txtaccountsettinginputnewpass" type="password" />
+						</div>
+						<div style="top:120; margin-left:54" class="accountsettinginput" id="accountsettinginputrepass">
+							Xác Nhận Lại Password Mới:
+							<input class="styleaccountsettinginput" id="txtaccountsettinginputrepass" type="password" />
+						</div>
+						<div style="top:160" class="accountsettinginput" id="accountsettinginputphone">
+							<input type="checkbox" id="checkchangephone" onchange="checkchangephone()"/>
+							Nhập Số Điện Thoại Mới:
+							<input style="margin-left: 23" class="styleaccountsettinginput" id="txtaccountsettinginputphone" type="text" disabled="disabled"/>
+						</div>
+						<div style="top:200" class="accountsettinginput" id="accountsettinginputyear">
+							<input type="checkbox" id="checkchangeyear" onchange="checkchangeyear()"/>
+							Chọn Năm Sinh Mới:
+							<select style="margin-left: 52" class="styleaccountsettinginput" id="comboaccountsettinginputyear" disabled="disabled">
+								<option>Chọn Năm Sinh</option>
+								<option>1900</option>
+								<option>1901</option>
+								<option>1902</option>
+								<option>1903</option>
+								<option>1904</option>
+								<option>1905</option>
+								<option>1906</option>
+								<option>1907</option>
+								<option>1908</option>
+								<option>1909</option>
+								<option>1910</option>
+								<option>1911</option>
+								<option>1912</option>
+								<option>1913</option>
+								<option>1914</option>
+								<option>1915</option>
+								<option>1916</option>
+								<option>1917</option>
+								<option>1918</option>
+								<option>1919</option>
+								<option>1920</option>
+								<option>1921</option>
+								<option>1922</option>
+								<option>1923</option>
+								<option>1924</option>
+								<option>1925</option>
+								<option>1926</option>
+								<option>1927</option>
+								<option>1928</option>
+								<option>1929</option>
+								<option>1930</option>
+								<option>1931</option>
+								<option>1932</option>
+								<option>1933</option>
+								<option>1934</option>
+								<option>1935</option>
+								<option>1936</option>
+								<option>1937</option>
+								<option>1938</option>
+								<option>1939</option>
+								<option>1940</option>
+								<option>1941</option>
+								<option>1942</option>
+								<option>1943</option>
+								<option>1944</option>
+								<option>1945</option>
+								<option>1946</option>
+								<option>1947</option>
+								<option>1948</option>
+								<option>1949</option>
+								<option>1950</option>
+								<option>1951</option>
+								<option>1952</option>
+								<option>1953</option>
+								<option>1954</option>
+								<option>1955</option>
+								<option>1956</option>
+								<option>1957</option>
+								<option>1958</option>
+								<option>1959</option>
+								<option>1960</option>
+								<option>1961</option>
+								<option>1962</option>
+								<option>1963</option>
+								<option>1964</option>
+								<option>1965</option>
+								<option>1966</option>
+								<option>1967</option>
+								<option>1968</option>
+								<option>1969</option>
+								<option>1970</option>
+								<option>1971</option>
+								<option>1972</option>
+								<option>1973</option>
+								<option>1974</option>
+								<option>1975</option>
+								<option>1976</option>
+								<option>1977</option>
+								<option>1978</option>
+								<option>1979</option>
+								<option>1980</option>
+								<option>1981</option>
+								<option>1982</option>
+								<option>1983</option>
+								<option>1984</option>
+								<option>1985</option>
+								<option>1986</option>
+								<option>1987</option>
+								<option>1988</option>
+								<option>1989</option>
+								<option>1990</option>
+								<option>1991</option>
+								<option>1992</option>
+								<option>1993</option>
+								<option>1994</option>
+								<option>1995</option>
+								<option>1996</option>
+								<option>1997</option>
+								<option>1998</option>
+								<option>1999</option>
+								<option>2000</option>
+								<option>2001</option>
+								<option>2002</option>
+								<option>2003</option>
+								<option>2004</option>
+								<option>2005</option>
+								<option>2006</option>
+								<option>2007</option>
+								<option>2008</option>
+								<option>2009</option>
+								<option>2010</option>
+								<option>2011</option>
+								<option>2012</option>
+								<option>2013</option>
+								<option>2014</option>
+							</select>
+						</div>
+						
+						<div style="top:240" class="accountsettinginput" id="accountsettinginputborn">
+							<input type="checkbox" id="checkchangeborn" onchange="checkchangeborn()"/>
+							Nhập Nơi Sinh Mới:
+							<select style="margin-left: 58" class="styleaccountsettinginput" id="comboaccountsettinginputborn" disabled="disabled">
+									<option>Chọn Nơi Sinh</option>
+								<option>An Giang</option>
+	   							<option>Bà Rịa Vũng Tàu</option>
+	   							<option>Bắc Giang</option>
+	   							<option>Bắc Cạn</option>
+	   							<option>Bạc Liêu</option>
+	   							<option>Bắc Ninh</option>
+	   							<option>Bến Trê</option>
+	   							<option>Bình Định</option>
+	   							<option>Bình Dương</option>
+	   							<option>Bình Phước</option>
+	   							<option>Bình Thuận</option>
+	   							<option>Cà Mau</option>
+	   							<option>Cao Bằng</option>
+	   							<option>Đăk Lăk</option>
+	   							<option>Đăk Nông</option>
+	   							<option>Điện Biên</option>
+	   							<option>Đồng Nai</option>
+	   							<option>Đồng Tháp</option>
+	   							<option>Gia Lai</option>
+	   							<option>Hà Giang</option>
+	   							<option>Hà Nam</option>
+	   							<option>Hà Tĩnh</option>
+	   							<option>Hải Dương</option>
+	   							<option>Hậu Giang</option>
+	   							<option>Hòa Bình</option>
+	   							<option>Hưng Yên</option>
+	   							<option>Khánh Hòa</option>
+	   							<option>Kiên Giang</option>
+	   							<option>Kon Tum</option>
+	   							<option>Lai Châu</option>
+	   							<option>Lâm Đồng</option>
+	   							<option>Lạng Sơn</option>
+	   							<option>Lào Cai</option>
+	   							<option>Long An</option>
+	   							<option>Nam Định</option>
+	   							<option>Nghệ An</option>
+	   							<option>Ninh Bình</option>
+	   							<option>Ninh Thuận</option>
+	   							<option>Phú Thọ</option>
+	   							<option>Quảng Bình</option>
+	   							<option>Quản Nam</option>
+	   							<option>Quảng Ngãi</option>
+	   							<option>Quảng Trị</option>
+	   							<option>Sóc Trăng</option>
+	   							<option>Sơn La</option>
+	   							<option>Tây Ninh</option>
+	   							<option>Thái Bình</option>
+	   							<option>Thái Nguyên</option>
+	   							<option>Thanh Hóa</option>
+	   							<option>Thừa Thiên Huế</option>
+	   							<option>Tiền Giang</option>
+	   							<option>Trà Vinh</option>
+	   							<option>Tuyên Quang</option>
+	   							<option>Vĩnh Long</option>
+	   							<option>Vĩnh Phúc</option>
+	   							<option>Yên Bái</option>
+	   							<option>Phú Yên</option>
+	   							<option>Cần Thơ</option>
+	   							<option>Đà Nẵng</option>
+	   							<option>Hải Phòng</option>
+	   							<option>Hà Nội</option>
+	   							<option>Tp. Hồ Chí Minh</option>
+							</select>
+						</div>
+						<img style="left: 550; width: 270" class="accountsettingavatar" src="img/avatar.jpg" />
+						<input type="file" style="display: none; position: absolute; top:13; left: 828" class="accountsettinguploadimg" id="accountsettinguploadimg" value="Tải Ảnh Lên"/>
+						<button style="display: none; position: absolute; top:50; left: 810" class="submitstyle" id="accountsettingchooseimg">
+							Chọn Làm Hình Đại Diện
+						</button>
+						<div style="font-style:italic;color: red ;top: 200; left: 800" class="accountsettinginput" id="accountsettingnotification" >
+							
+						</div>
+						<button style="display: none; position: absolute; top:240; left: 940" class="submitstyle" id="accountsettingchange">
+							Xác Nhận
+						</button>
+						<button style="display: none; position: absolute; top:240; left: 1020" class="submitstyle" id="accountsettingclose">
+							Đóng
+						</button>
+						
+					<!--if Login-->
+						<input style="margin-top: 25;" class="logininput" id="usernamelogin" type="text" value="điền tên đăng nhặp của bạn">
+						<input class="logininput" id="passlogin" type="text" value="điền mật khẩu của bạn">
+						<button class="submitstyle" id="submitlogin" >
+							Đăng Nhập
+						</button>
+					<!--if register-->
+						<input style="margin-top: 25;" class="registerinput" id="usernameregister" type="text" value="điền tên đăng nhập" onkeypress="checkuser()"><span class="alert" id="alertuser"> </span>
+						<input class="registerinput" id="passregister" type="text" value="điền mật khẩu"><span class="alert" id="alertpass"> </span>
+						<input class="registerinput" id="repassregister" type="text" value="nhập lại mật khẩu"><span class="alert" id="alertrepass"> </span>
+						<input class="registerinput" id="mailregister" type="text" value="điền email"><span class="alert" id="alertmail"> </span>
+						<input class="registerinput" id="remailregister" type="text" value="nhập lại email"><span class="alert" id="alertremail"> </span>
+						<input class="registerinput" id="phoneregister" type="text" value="điền số điện thoại" onkeypress="return justNumber(event)">
+						<select class="registerinput" id="yearregister">
+							<option>Chọn Năm Sinh</option>
+							<option>1900</option>
+							<option>1901</option>
+							<option>1902</option>
+							<option>1903</option>
+							<option>1904</option>
+							<option>1905</option>
+							<option>1906</option>
+							<option>1907</option>
+							<option>1908</option>
+							<option>1909</option>
+							<option>1910</option>
+							<option>1911</option>
+							<option>1912</option>
+							<option>1913</option>
+							<option>1914</option>
+							<option>1915</option>
+							<option>1916</option>
+							<option>1917</option>
+							<option>1918</option>
+							<option>1919</option>
+							<option>1920</option>
+							<option>1921</option>
+							<option>1922</option>
+							<option>1923</option>
+							<option>1924</option>
+							<option>1925</option>
+							<option>1926</option>
+							<option>1927</option>
+							<option>1928</option>
+							<option>1929</option>
+							<option>1930</option>
+							<option>1931</option>
+							<option>1932</option>
+							<option>1933</option>
+							<option>1934</option>
+							<option>1935</option>
+							<option>1936</option>
+							<option>1937</option>
+							<option>1938</option>
+							<option>1939</option>
+							<option>1940</option>
+							<option>1941</option>
+							<option>1942</option>
+							<option>1943</option>
+							<option>1944</option>
+							<option>1945</option>
+							<option>1946</option>
+							<option>1947</option>
+							<option>1948</option>
+							<option>1949</option>
+							<option>1950</option>
+							<option>1951</option>
+							<option>1952</option>
+							<option>1953</option>
+							<option>1954</option>
+							<option>1955</option>
+							<option>1956</option>
+							<option>1957</option>
+							<option>1958</option>
+							<option>1959</option>
+							<option>1960</option>
+							<option>1961</option>
+							<option>1962</option>
+							<option>1963</option>
+							<option>1964</option>
+							<option>1965</option>
+							<option>1966</option>
+							<option>1967</option>
+							<option>1968</option>
+							<option>1969</option>
+							<option>1970</option>
+							<option>1971</option>
+							<option>1972</option>
+							<option>1973</option>
+							<option>1974</option>
+							<option>1975</option>
+							<option>1976</option>
+							<option>1977</option>
+							<option>1978</option>
+							<option>1979</option>
+							<option>1980</option>
+							<option>1981</option>
+							<option>1982</option>
+							<option>1983</option>
+							<option>1984</option>
+							<option>1985</option>
+							<option>1986</option>
+							<option>1987</option>
+							<option>1988</option>
+							<option>1989</option>
+							<option>1990</option>
+							<option>1991</option>
+							<option>1992</option>
+							<option>1993</option>
+							<option>1994</option>
+							<option>1995</option>
+							<option>1996</option>
+							<option>1997</option>
+							<option>1998</option>
+							<option>1999</option>
+							<option>2000</option>
+							<option>2001</option>
+							<option>2002</option>
+							<option>2003</option>
+							<option>2004</option>
+							<option>2005</option>
+							<option>2006</option>
+							<option>2007</option>
+							<option>2008</option>
+							<option>2009</option>
+							<option>2010</option>
+							<option>2011</option>
+							<option>2012</option>
+							<option>2013</option>
+							<option>2014</option>
+						</select>
+						<select class="registerinput" id="bornregister">
+							<option>Chọn Nơi Sinh</option>
+							<option>An Giang</option>
+   							<option>Bà Rịa Vũng Tàu</option>
+   							<option>Bắc Giang</option>
+   							<option>Bắc Cạn</option>
+   							<option>Bạc Liêu</option>
+   							<option>Bắc Ninh</option>
+   							<option>Bến Trê</option>
+   							<option>Bình Định</option>
+   							<option>Bình Dương</option>
+   							<option>Bình Phước</option>
+   							<option>Bình Thuận</option>
+   							<option>Cà Mau</option>
+   							<option>Cao Bằng</option>
+   							<option>Đăk Lăk</option>
+   							<option>Đăk Nông</option>
+   							<option>Điện Biên</option>
+   							<option>Đồng Nai</option>
+   							<option>Đồng Tháp</option>
+   							<option>Gia Lai</option>
+   							<option>Hà Giang</option>
+   							<option>Hà Nam</option>
+   							<option>Hà Tĩnh</option>
+   							<option>Hải Dương</option>
+   							<option>Hậu Giang</option>
+   							<option>Hòa Bình</option>
+   							<option>Hưng Yên</option>
+   							<option>Khánh Hòa</option>
+   							<option>Kiên Giang</option>
+   							<option>Kon Tum</option>
+   							<option>Lai Châu</option>
+   							<option>Lâm Đồng</option>
+   							<option>Lạng Sơn</option>
+   							<option>Lào Cai</option>
+   							<option>Long An</option>
+   							<option>Nam Định</option>
+   							<option>Nghệ An</option>
+   							<option>Ninh Bình</option>
+   							<option>Ninh Thuận</option>
+   							<option>Phú Thọ</option>
+   							<option>Quảng Bình</option>
+   							<option>Quản Nam</option>
+   							<option>Quảng Ngãi</option>
+   							<option>Quảng Trị</option>
+   							<option>Sóc Trăng</option>
+   							<option>Sơn La</option>
+   							<option>Tây Ninh</option>
+   							<option>Thái Bình</option>
+   							<option>Thái Nguyên</option>
+   							<option>Thanh Hóa</option>
+   							<option>Thừa Thiên Huế</option>
+   							<option>Tiền Giang</option>
+   							<option>Trà Vinh</option>
+   							<option>Tuyên Quang</option>
+   							<option>Vĩnh Long</option>
+   							<option>Vĩnh Phúc</option>
+   							<option>Yên Bái</option>
+   							<option>Phú Yên</option>
+   							<option>Cần Thơ</option>
+   							<option>Đà Nẵng</option>
+   							<option>Hải Phòng</option>
+   							<option>Hà Nội</option>
+   							<option>Tp. Hồ Chí Minh</option>
+						</select>
+						<button class="submitstyle" id="submitregister">
+							Đăng Ký
+						</button>
 					</div>
 				
-				<!--Main Forum-->
+<!--Main Forum-->
 				<div class="mainforum" id="mainforum">
 					
-					<!--Boxs-->
+<!--Boxs-->
+					<div class="catalog" id="catalog0">
+						Khu Vực Điều Hành
+					</div>
+					
+					
 					<div class="box" id="box1">
-						<div class="boxtitle" id="boxtitle1" onclick="openbox('boxtitle1');">
+						<div class="boxtitle" id="boxtitle1" onclick="openbox('noiquythongbao');">
 							Nội Quy - Thông Báo
 						</div>
-						<div class="thongtinbox" id="thongtinbox">
+						<div class="thongtinbox">
 							Những thông báo nội quy và quy định mới nhất của diễn đàn sẽ được post ở đây.
 						</div>
-						<div class="chitietbox" id="chitietbox">
+						<div class="chitietbox">
 							Chủ đề: 4213<br />Bài viêt: 41213
 						</div>
 						<div class="newestthreat">
@@ -345,13 +1378,13 @@
 							</div>
 					</div>
 					<div class="box" id="box2">
-						<div class="boxtitle" id="boxtitle2" onclick="openbox('boxtitle3');">
+						<div class="boxtitle" id="boxtitle2" onclick="openbox('huongdansudungdiendanboitoan');">
 							Hướng Dẫn Sử Dụng Diễn Đàn Bói Toán
 						</div>
-						<div class="thongtinbox" id="thongtinbox">
+						<div class="thongtinbox">
 							Nơi hỗ trợ, hướng dẫn cách sử dụng diễn đàn Bói Toán đúng mục đích 
 						</div>
-						<div class="chitietbox" id="chitietbox">
+						<div class="chitietbox">
 							Chủ đề: 4213<br />Bài viêt: 41213
 						</div>
 						<div class="newestthreat">
@@ -371,13 +1404,13 @@
 					</div>
 					
 					<div class="box" id="box3">
-						<div class="boxtitle" id="boxtitle3" onclick="openbox('boxtitle3');">
+						<div class="boxtitle" id="boxtitle3" onclick="openbox('sukienhoatdongchung');">
 							Sự Kiện - Hoạt Động Chung
 						</div>
-						<div class="thongtinbox" id="thongtinbox">
+						<div class="thongtinbox">
 							Các hoạt động Online, Offline của các thành viên như : Thảo luận chuyên đề, họp mặt, thể thao, giải trí v.v...
 						</div>
-						<div class="chitietbox" id="chitietbox">
+						<div class="chitietbox">
 							Chủ đề: 4213<br />Bài viêt: 41213
 						</div>
 						<div class="newestthreat">
@@ -391,19 +1424,21 @@
 								00:00
 							</div>
 						</div>
-						<div class="lineofbox">
-								
-							</div>
+				
+					</div>
+<!--MIEN BAC-->					
+					<div class="catalog" id="catalog1">
+						Khu Vực Miền Bắc
 					</div>
 					
-					<div class="box" id="box">
-						<div class="boxtitle" id="boxtitle">
-							Nội Quy - Thông Báo
+					<div class="box">
+						<div class="boxtitle" id="boxtitle4" onclick="openbox('dongbacbo');">
+							Đông Bắc Bộ
 						</div>
-						<div class="thongtinbox" id="thongtinbox">
+						<div class="thongtinbox">
 							Những thông báo nội quy và quy định mới nhất của diễn đàn sẽ được post ở đây.
 						</div>
-						<div class="chitietbox" id="chitietbox">
+						<div class="chitietbox">
 							Chủ đề: 4213<br />Bài viêt: 41213
 						</div>
 						<div class="newestthreat">
@@ -422,14 +1457,14 @@
 							</div>
 					</div>
 					
-					<div class="box" id="box">
-						<div class="boxtitle" id="boxtitle">
-							Nội Quy - Thông Báo
+					<div class="box">
+						<div class="boxtitle" id="boxtitle5" onclick="openbox('taybacbo');">
+							Tây Bắc Bộ
 						</div>
-						<div class="thongtinbox" id="thongtinbox">
+						<div class="thongtinbox">
 							Những thông báo nội quy và quy định mới nhất của diễn đàn sẽ được post ở đây.
 						</div>
-						<div class="chitietbox" id="chitietbox">
+						<div class="chitietbox">
 							Chủ đề: 4213<br />Bài viêt: 41213
 						</div>
 						<div class="newestthreat">
@@ -448,14 +1483,14 @@
 							</div>
 					</div>
 					
-					<div class="box" id="box">
-						<div class="boxtitle" id="boxtitle">
-							Nội Quy - Thông Báo
+					<div class="box">
+						<div class="boxtitle" id="boxtitle6" onclick="openbox('haiphongnamdinhthaibinh');">
+							Hải Phòng - Nạm Định - Thái Bình
 						</div>
-						<div class="thongtinbox" id="thongtinbox">
+						<div class="thongtinbox">
 							Những thông báo nội quy và quy định mới nhất của diễn đàn sẽ được post ở đây.
 						</div>
-						<div class="chitietbox" id="chitietbox">
+						<div class="chitietbox">
 							Chủ đề: 4213<br />Bài viêt: 41213
 						</div>
 						<div class="newestthreat">
@@ -474,14 +1509,40 @@
 							</div>
 					</div>
 					
-					<div class="box" id="box">
-						<div class="boxtitle" id="boxtitle">
-							Nội Quy - Thông Báo
+					<div class="box">
+						<div class="boxtitle" id="boxtitle7" onclick="openbox('hanoi');">
+							Hà Nội
 						</div>
-						<div class="thongtinbox" id="thongtinbox">
+						<div class="thongtinbox">
 							Những thông báo nội quy và quy định mới nhất của diễn đàn sẽ được post ở đây.
 						</div>
-						<div class="chitietbox" id="chitietbox">
+						<div class="chitietbox">
+							Chủ đề: 4213<br />Bài viêt: 41213
+						</div>
+						<div class="newestthreat">
+							<div class="newestthreattitle">
+								Thông báo về việc nội quy post bài trong forum
+							</div>
+							<div class="newestthreatsender">
+								Admin
+							</div>
+							<div class="newestthreattime">
+								00:00
+							</div>
+						</div>
+					</div>
+<!--MIENTRUNG-->
+					<div class="catalog" id="catalog2">
+						Khu Vực Miền Trung
+					</div>					
+					<div class="box">
+						<div class="boxtitle" id="boxtitle8" onclick="openbox('thanhnghetinh');">
+							Thanh Nghệ Tĩnh
+						</div>
+						<div class="thongtinbox">
+							Những thông báo nội quy và quy định mới nhất của diễn đàn sẽ được post ở đây.
+						</div>
+						<div class="chitietbox">
 							Chủ đề: 4213<br />Bài viêt: 41213
 						</div>
 						<div class="newestthreat">
@@ -500,14 +1561,14 @@
 							</div>
 					</div>
 					
-					<div class="box" id="box">
-						<div class="boxtitle" id="boxtitle">
-							Nội Quy - Thông Báo
+					<div class="box">
+						<div class="boxtitle" id="boxtitle9" onclick="openbox('binhtrithuathienhue');">
+							Bình Trị Thừa Thiên Huế
 						</div>
-						<div class="thongtinbox" id="thongtinbox">
+						<div class="thongtinbox">
 							Những thông báo nội quy và quy định mới nhất của diễn đàn sẽ được post ở đây.
 						</div>
-						<div class="chitietbox" id="chitietbox">
+						<div class="chitietbox">
 							Chủ đề: 4213<br />Bài viêt: 41213
 						</div>
 						<div class="newestthreat">
@@ -526,14 +1587,14 @@
 							</div>
 					</div>
 					
-					<div class="box" id="box">
-						<div class="boxtitle" id="boxtitle">
-							Nội Quy - Thông Báo
+					<div class="box">
+						<div class="boxtitle" id="boxtitle10" onclick="openbox('quangnamdanang');">
+							Quảng Nam - Đà Nắng
 						</div>
-						<div class="thongtinbox" id="thongtinbox">
+						<div class="thongtinbox">
 							Những thông báo nội quy và quy định mới nhất của diễn đàn sẽ được post ở đây.
 						</div>
-						<div class="chitietbox" id="chitietbox">
+						<div class="chitietbox">
 							Chủ đề: 4213<br />Bài viêt: 41213
 						</div>
 						<div class="newestthreat">
@@ -549,17 +1610,16 @@
 						</div>
 						<div class="lineofbox">
 								
-							</div>
+						</div>
 					</div>
-					
-					<div class="box" id="box">
-						<div class="boxtitle" id="boxtitle">
-							Nội Quy - Thông Báo
+					<div class="box">
+						<div class="boxtitle" id="boxtitle11" onclick="openbox('taynguyen');">
+							Tây Nguyên
 						</div>
-						<div class="thongtinbox" id="thongtinbox">
+						<div class="thongtinbox">
 							Những thông báo nội quy và quy định mới nhất của diễn đàn sẽ được post ở đây.
 						</div>
-						<div class="chitietbox" id="chitietbox">
+						<div class="chitietbox">
 							Chủ đề: 4213<br />Bài viêt: 41213
 						</div>
 						<div class="newestthreat">
@@ -576,15 +1636,195 @@
 						<div class="lineofbox">
 								
 						</div>
+					</div>
+					<div class="box">
+						<div class="boxtitle" id="boxtitle12" onclick="openbox('namtrungbo');">
+							Nam Trung Bộ
+						</div>
+						<div class="thongtinbox">
+							Những thông báo nội quy và quy định mới nhất của diễn đàn sẽ được post ở đây.
+						</div>
+						<div class="chitietbox">
+							Chủ đề: 4213<br />Bài viêt: 41213
+						</div>
+						<div class="newestthreat">
+							<div class="newestthreattitle">
+								Thông báo về việc nội quy post bài trong forum
+							</div>
+							<div class="newestthreatsender">
+								Admin
+							</div>
+							<div class="newestthreattime">
+								00:00
+							</div>
+						</div>
+					</div>
+<!--MIỀN NAM-->		
+					<div class="catalog" id="catalog3">
+						Khu Vực Miền Nam
+					</div>
+					<div class="box">
+						<div class="boxtitle" id="boxtitle13" onclick="openbox('thanhphohochiminh');">
+							Thành Phố Hồ Chí Minh
+						</div>
+						<div class="thongtinbox">
+							Những thông báo nội quy và quy định mới nhất của diễn đàn sẽ được post ở đây.
+						</div>
+						<div class="chitietbox">
+							Chủ đề: 4213<br />Bài viêt: 41213
+						</div>
+						<div class="newestthreat">
+							<div class="newestthreattitle">
+								Thông báo về việc nội quy post bài trong forum
+							</div>
+							<div class="newestthreatsender">
+								Admin
+							</div>
+							<div class="newestthreattime">
+								00:00
+							</div>
+						</div>
+						<div class="lineofbox">
+								
+						</div>
+					</div>
+					<div class="box">
+						<div class="boxtitle" id="boxtitle14" onclick="openbox('dongnambo');">
+							Đông Nam Bộ
+						</div>
+						<div class="thongtinbox">
+							Những thông báo nội quy và quy định mới nhất của diễn đàn sẽ được post ở đây.
+						</div>
+						<div class="chitietbox">
+							Chủ đề: 4213<br />Bài viêt: 41213
+						</div>
+						<div class="newestthreat">
+							<div class="newestthreattitle">
+								Thông báo về việc nội quy post bài trong forum
+							</div>
+							<div class="newestthreatsender">
+								Admin
+							</div>
+							<div class="newestthreattime">
+								00:00
+							</div>
+						</div>
+						<div class="lineofbox">
+								
+						</div>
+					</div>
+					<div class="box">
+						<div class="boxtitle" id="boxtitle15" onclick="openbox('canthotaynambo');">
+							Cần Thơ - Tây Nam Bộ
+						</div>
+						<div class="thongtinbox">
+							Những thông báo nội quy và quy định mới nhất của diễn đàn sẽ được post ở đây.
+						</div>
+						<div class="chitietbox">
+							Chủ đề: 4213<br />Bài viêt: 41213
+						</div>
+						<div class="newestthreat">
+							<div class="newestthreattitle">
+								Thông báo về việc nội quy post bài trong forum
+							</div>
+							<div class="newestthreatsender">
+								Admin
+							</div>
+							<div class="newestthreattime">
+								00:00
+							</div>
+						</div>
+					</div>
+					<div style="height: 100px;" class="catalog">
+						THIẾT KẾ SAU
 					</div>
 				
 					
 				</div>
-				<!--Thread-->
+<!--Threads-->
 				<img class="backforum" id="backforum" src="img/arrowforum.jpg"/>
+				<img class="backforum" id="backthreads" src="img/arrowforum.jpg"/>
 				<div class="threads" id="threads">
-						
+				
 				</div>
+				<div class="threads" id="thread">
+					<div class="catalogofthread">
+						Title of Thread <span>By ducgao4213</span>
+						</div>
+					<div class="athread">
+						<div class="timethread">
+							at 12:23 04/04/2014
+						</div>
+						<div class="senderthread" onclick="openbox('canthotaynambo');">
+							Cần Thơ - Tây Nam Bộ
+						</div>
+						<div class="contextthread">
+							Những thông báo nội quy và quy định mới nhất của diễn đàn sẽ được post ở đây.
+							Những thông báo nội quy và quy định mới nhất của diễn đàn sẽ được post ở đây.
+							Những thông báo nội quy và quy định mới nhất của diễn đàn sẽ được post ở đây.
+							Những thông báo nội quy và quy định mới nhất của diễn đàn sẽ được post ở đây.
+							Những thông báo nội quy và quy định mới nhất của diễn đàn sẽ được post ở đây.
+							Những thông báo nội quy và quy định mới nhất của diễn đàn sẽ được post ở đây.
+							Những thông báo nội quy và quy định mới nhất của diễn đàn sẽ được post ở đây.
+							Những thông báo nội quy và quy định mới nhất của diễn đàn sẽ được post ở đây.
+							Những thông báo nội quy và quy định mới nhất của diễn đàn sẽ được post ở đây.
+						</div>
+						<div style="background-color: white" class="lineofbox">
+							
+						</div>
+					</div>
+					<div class="catalogofthread">
+						Title of Thread <span>By ducgao4213</span>
+						</div>
+					<div class="athread">
+						<div class="timethread">
+							at 12:23 04/04/2014
+						</div>
+						<div class="senderthread" onclick="openbox('canthotaynambo');">
+							Cần Thơ - Tây Nam Bộ
+						</div>
+						<div class="contextthread">
+							Những thông báo nội quy và quy định mới nhất của diễn đàn sẽ được post ở đây.
+						</div>
+						<div class="lineofbox">
+							
+						</div>
+					</div>
+					<div class="athread">
+						<div class="timethread">
+							at 12:23 04/04/2014
+						</div>
+						<div class="senderthread" onclick="openbox('canthotaynambo');">
+							Cần Thơ - Tây Nam Bộ
+						</div>
+						<div class="contextthread">
+							Những thông báo nội quy và quy định mới nhất của diễn đàn sẽ được post ở đây.
+						</div>
+						<div class="lineofbox">
+							
+						</div>
+					</div>
+					<div class="athread">
+						<div class="timethread">
+							at 12:23 04/04/2014
+						</div>
+						<div class="senderthread" onclick="openbox('canthotaynambo');">
+							Cần Thơ - Tây Nam Bộ
+						</div>
+						<div class="contextthread">
+							Những thông báo nội quy và quy định mới nhất của diễn đàn sẽ được post ở đây.
+							Những thông báo nội quy và quy định mới nhất của diễn đàn sẽ được post ở đây.
+							Những thông báo nội quy và quy định mới nhất của diễn đàn sẽ được post ở đây.
+							Những thông báo nội quy và quy định mới nhất của diễn đàn sẽ được post ở đây.
+							Những thông báo nội quy và quy định mới nhất của diễn đàn sẽ được post ở đây.
+						</div>
+						<div class="lineofbox">
+							
+						</div>
+					</div>
+				</div>
+	
+					
 			</div>	
 		</div>
 	</body>

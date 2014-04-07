@@ -1,0 +1,42 @@
+
+<div class="catalogofthreads">
+						Ná»™i Quy - ThĂ´ng BĂ¡o
+					</div>	<div class="thread">
+						<div class="threadtitle">
+							Thông báo v? n?i quy post bài trong forum
+						</div>
+						<div class="thongtinthread">
+							ducgao4213
+						</div>
+						<div class="chitietthread">
+							23:53 5/4/2014<br />Comment: 50
+						</div>
+						<div class="newestsender">
+							<div class="newestsendername">
+								maigao4213
+							</div>
+							<div class="newestsendertime">
+								23:56
+							</div>
+						</div>
+						
+					</div><div class="thread">
+						<div class="threadtitle">
+							Quy ??nh X? Ph?t V?i Các Vi Ph?m
+						</div>
+						<div class="thongtinthread">
+							ducgao4213
+						</div>
+						<div class="chitietthread">
+							1:08 6/4/2014<br />Comment: 50
+						</div>
+						<div class="newestsender">
+							<div class="newestsendername">
+								maigao4213
+							</div>
+							<div class="newestsendertime">
+								23:56
+							</div>
+						</div>
+						
+					</div>

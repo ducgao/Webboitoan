@@ -1,0 +1,465 @@
+<div class="catalogofthreads">
+							Nội Quy - Thông Báo
+						</div>	<div class="thread">
+						<div class="threadtitle" onclick="showthread('1');">
+							Thông báo về nội quy post bài trong forum
+						</div>
+						<div class="thongtinthread" onclick="showuserinfo('ducgao4213');">
+							ducgao4213
+						</div>
+						<div class="chitietthread">
+							23:53 5/4/2014<br />Comment: 4
+						</div>
+						<div class="newestsender">
+							<div class="newestsendername" onclick="showuserinfo('maigao4213');" >
+								maigao4213
+							</div>
+							<div class="newestsendertime">
+								15:31 7/4/2014
+							</div>
+						</div>
+						
+					</div><div class="lineofbox">
+								
+					</div><div class="thread">
+						<div class="threadtitle" onclick="showthread('2');">
+							Quy Định Xử Phạt Với Các Vi Phạm
+						</div>
+						<div class="thongtinthread" onclick="showuserinfo('ducgao4213');">
+							ducgao4213
+						</div>
+						<div class="chitietthread">
+							1:08 6/4/2014<br />Comment: 0
+						</div>
+						<div class="newestsender">
+							<div class="newestsendername" onclick="showuserinfo('');" >
+								
+							</div>
+							<div class="newestsendertime">
+								
+							</div>
+						</div>
+						
+					</div><div class="catalogofthreads">
+						Bài Mới Nhất
+					</div>	<div class="thread">
+						<div class="threadtitle" onclick="showuserinfo('3')">
+							Thread 1
+						</div>
+						<div class="thongtinthread" onclick="showuserinfo('ducgao4213')">
+							ducgao4213
+						</div>
+						<div class="chitietthread">
+							1:09 6/4/2014<br />Comment: 0
+						</div>
+						<div class="newestsender">
+							<div class="newestsendername" onclick="showuserinfo('')">
+								
+							</div>
+							<div class="newestsendertime">
+								
+							</div>
+						</div>
+						
+					</div><div class="lineofbox">
+								
+					</div><div class="thread">
+						<div class="threadtitle" onclick="showuserinfo('4')">
+							Thread 2
+						</div>
+						<div class="thongtinthread" onclick="showuserinfo('ducgao4213')">
+							ducgao4213
+						</div>
+						<div class="chitietthread">
+							1:09 6/4/2014<br />Comment: 0
+						</div>
+						<div class="newestsender">
+							<div class="newestsendername" onclick="showuserinfo('')">
+								
+							</div>
+							<div class="newestsendertime">
+								
+							</div>
+						</div>
+						
+					</div><div class="lineofbox">
+								
+					</div><div class="thread">
+						<div class="threadtitle" onclick="showuserinfo('5')">
+							Thread 3
+						</div>
+						<div class="thongtinthread" onclick="showuserinfo('ducgao4213')">
+							ducgao4213
+						</div>
+						<div class="chitietthread">
+							1:09 6/4/2014<br />Comment: 0
+						</div>
+						<div class="newestsender">
+							<div class="newestsendername" onclick="showuserinfo('')">
+								
+							</div>
+							<div class="newestsendertime">
+								
+							</div>
+						</div>
+						
+					</div><div class="lineofbox">
+								
+					</div><div class="thread">
+						<div class="threadtitle" onclick="showuserinfo('6')">
+							Thread 4
+						</div>
+						<div class="thongtinthread" onclick="showuserinfo('ducgao4213')">
+							ducgao4213
+						</div>
+						<div class="chitietthread">
+							1:09 6/4/2014<br />Comment: 0
+						</div>
+						<div class="newestsender">
+							<div class="newestsendername" onclick="showuserinfo('')">
+								
+							</div>
+							<div class="newestsendertime">
+								
+							</div>
+						</div>
+						
+					</div><div class="lineofbox">
+								
+					</div><div class="thread">
+						<div class="threadtitle" onclick="showuserinfo('7')">
+							Thread 5
+						</div>
+						<div class="thongtinthread" onclick="showuserinfo('ducgao4213')">
+							ducgao4213
+						</div>
+						<div class="chitietthread">
+							1:09 6/4/2014<br />Comment: 0
+						</div>
+						<div class="newestsender">
+							<div class="newestsendername" onclick="showuserinfo('')">
+								
+							</div>
+							<div class="newestsendertime">
+								
+							</div>
+						</div>
+						
+					</div><div class="lineofbox">
+								
+					</div><div class="thread">
+						<div class="threadtitle" onclick="showuserinfo('8')">
+							Thread 6
+						</div>
+						<div class="thongtinthread" onclick="showuserinfo('ducgao4213')">
+							ducgao4213
+						</div>
+						<div class="chitietthread">
+							1:09 6/4/2014<br />Comment: 0
+						</div>
+						<div class="newestsender">
+							<div class="newestsendername" onclick="showuserinfo('')">
+								
+							</div>
+							<div class="newestsendertime">
+								
+							</div>
+						</div>
+						
+					</div><div class="lineofbox">
+								
+					</div><div class="thread">
+						<div class="threadtitle" onclick="showuserinfo('9')">
+							Thread 7
+						</div>
+						<div class="thongtinthread" onclick="showuserinfo('ducgao4213')">
+							ducgao4213
+						</div>
+						<div class="chitietthread">
+							1:09 6/4/2014<br />Comment: 0
+						</div>
+						<div class="newestsender">
+							<div class="newestsendername" onclick="showuserinfo('')">
+								
+							</div>
+							<div class="newestsendertime">
+								
+							</div>
+						</div>
+						
+					</div><div class="lineofbox">
+								
+					</div><div class="thread">
+						<div class="threadtitle" onclick="showuserinfo('10')">
+							Thread 8
+						</div>
+						<div class="thongtinthread" onclick="showuserinfo('ducgao4213')">
+							ducgao4213
+						</div>
+						<div class="chitietthread">
+							1:09 6/4/2014<br />Comment: 0
+						</div>
+						<div class="newestsender">
+							<div class="newestsendername" onclick="showuserinfo('')">
+								
+							</div>
+							<div class="newestsendertime">
+								
+							</div>
+						</div>
+						
+					</div><div class="lineofbox">
+								
+					</div><div class="thread">
+						<div class="threadtitle" onclick="showuserinfo('11')">
+							Thread 9
+						</div>
+						<div class="thongtinthread" onclick="showuserinfo('ducgao4213')">
+							ducgao4213
+						</div>
+						<div class="chitietthread">
+							1:09 6/4/2014<br />Comment: 0
+						</div>
+						<div class="newestsender">
+							<div class="newestsendername" onclick="showuserinfo('')">
+								
+							</div>
+							<div class="newestsendertime">
+								
+							</div>
+						</div>
+						
+					</div><div class="lineofbox">
+								
+					</div><div class="thread">
+						<div class="threadtitle" onclick="showuserinfo('12')">
+							Thread 10
+						</div>
+						<div class="thongtinthread" onclick="showuserinfo('ducgao4213')">
+							ducgao4213
+						</div>
+						<div class="chitietthread">
+							1:09 6/4/2014<br />Comment: 0
+						</div>
+						<div class="newestsender">
+							<div class="newestsendername" onclick="showuserinfo('')">
+								
+							</div>
+							<div class="newestsendertime">
+								
+							</div>
+						</div>
+						
+					</div><div class="lineofbox">
+								
+					</div><div class="thread">
+						<div class="threadtitle" onclick="showuserinfo('13')">
+							Thread 11
+						</div>
+						<div class="thongtinthread" onclick="showuserinfo('ducgao4213')">
+							ducgao4213
+						</div>
+						<div class="chitietthread">
+							1:09 6/4/2014<br />Comment: 0
+						</div>
+						<div class="newestsender">
+							<div class="newestsendername" onclick="showuserinfo('')">
+								
+							</div>
+							<div class="newestsendertime">
+								
+							</div>
+						</div>
+						
+					</div><div class="lineofbox">
+								
+					</div><div class="thread">
+						<div class="threadtitle" onclick="showuserinfo('14')">
+							Thread 12
+						</div>
+						<div class="thongtinthread" onclick="showuserinfo('ducgao4213')">
+							ducgao4213
+						</div>
+						<div class="chitietthread">
+							1:09 6/4/2014<br />Comment: 0
+						</div>
+						<div class="newestsender">
+							<div class="newestsendername" onclick="showuserinfo('')">
+								
+							</div>
+							<div class="newestsendertime">
+								
+							</div>
+						</div>
+						
+					</div><div class="lineofbox">
+								
+					</div><div class="thread">
+						<div class="threadtitle" onclick="showuserinfo('15')">
+							Thread 13
+						</div>
+						<div class="thongtinthread" onclick="showuserinfo('ducgao4213')">
+							ducgao4213
+						</div>
+						<div class="chitietthread">
+							1:09 6/4/2014<br />Comment: 0
+						</div>
+						<div class="newestsender">
+							<div class="newestsendername" onclick="showuserinfo('')">
+								
+							</div>
+							<div class="newestsendertime">
+								
+							</div>
+						</div>
+						
+					</div><div class="lineofbox">
+								
+					</div><div class="thread">
+						<div class="threadtitle" onclick="showuserinfo('16')">
+							Thread 14
+						</div>
+						<div class="thongtinthread" onclick="showuserinfo('ducgao4213')">
+							ducgao4213
+						</div>
+						<div class="chitietthread">
+							1:09 6/4/2014<br />Comment: 0
+						</div>
+						<div class="newestsender">
+							<div class="newestsendername" onclick="showuserinfo('')">
+								
+							</div>
+							<div class="newestsendertime">
+								
+							</div>
+						</div>
+						
+					</div><div class="lineofbox">
+								
+					</div><div class="thread">
+						<div class="threadtitle" onclick="showuserinfo('17')">
+							Thread 15
+						</div>
+						<div class="thongtinthread" onclick="showuserinfo('ducgao4213')">
+							ducgao4213
+						</div>
+						<div class="chitietthread">
+							1:09 6/4/2014<br />Comment: 0
+						</div>
+						<div class="newestsender">
+							<div class="newestsendername" onclick="showuserinfo('')">
+								
+							</div>
+							<div class="newestsendertime">
+								
+							</div>
+						</div>
+						
+					</div><div class="lineofbox">
+								
+					</div><div class="thread">
+						<div class="threadtitle" onclick="showuserinfo('18')">
+							Thread 16
+						</div>
+						<div class="thongtinthread" onclick="showuserinfo('ducgao4213')">
+							ducgao4213
+						</div>
+						<div class="chitietthread">
+							1:09 6/4/2014<br />Comment: 0
+						</div>
+						<div class="newestsender">
+							<div class="newestsendername" onclick="showuserinfo('')">
+								
+							</div>
+							<div class="newestsendertime">
+								
+							</div>
+						</div>
+						
+					</div><div class="lineofbox">
+								
+					</div><div class="thread">
+						<div class="threadtitle" onclick="showuserinfo('19')">
+							Thread 17
+						</div>
+						<div class="thongtinthread" onclick="showuserinfo('ducgao4213')">
+							ducgao4213
+						</div>
+						<div class="chitietthread">
+							1:09 6/4/2014<br />Comment: 0
+						</div>
+						<div class="newestsender">
+							<div class="newestsendername" onclick="showuserinfo('')">
+								
+							</div>
+							<div class="newestsendertime">
+								
+							</div>
+						</div>
+						
+					</div><div class="lineofbox">
+								
+					</div><div class="thread">
+						<div class="threadtitle" onclick="showuserinfo('20')">
+							Thread 18
+						</div>
+						<div class="thongtinthread" onclick="showuserinfo('ducgao4213')">
+							ducgao4213
+						</div>
+						<div class="chitietthread">
+							1:09 6/4/2014<br />Comment: 0
+						</div>
+						<div class="newestsender">
+							<div class="newestsendername" onclick="showuserinfo('')">
+								
+							</div>
+							<div class="newestsendertime">
+								
+							</div>
+						</div>
+						
+					</div><div class="lineofbox">
+								
+					</div><div class="thread">
+						<div class="threadtitle" onclick="showuserinfo('21')">
+							Thread 19
+						</div>
+						<div class="thongtinthread" onclick="showuserinfo('ducgao4213')">
+							ducgao4213
+						</div>
+						<div class="chitietthread">
+							1:09 6/4/2014<br />Comment: 0
+						</div>
+						<div class="newestsender">
+							<div class="newestsendername" onclick="showuserinfo('')">
+								
+							</div>
+							<div class="newestsendertime">
+								
+							</div>
+						</div>
+						
+					</div><div class="lineofbox">
+								
+					</div><div class="thread">
+						<div class="threadtitle" onclick="showuserinfo('22')">
+							Thread 20
+						</div>
+						<div class="thongtinthread" onclick="showuserinfo('maigao4213')">
+							maigao4213
+						</div>
+						<div class="chitietthread">
+							1:09 6/4/2014<br />Comment: 0
+						</div>
+						<div class="newestsender">
+							<div class="newestsendername" onclick="showuserinfo('')">
+								
+							</div>
+							<div class="newestsendertime">
+								
+							</div>
+						</div>
+						
+					</div><div style="height: 100px;" class="catalog">
+						THIẾT KẾ SAU
+					</div>
